@@ -1,0 +1,7 @@
+debian/control
+gpg
+python*
+__pycache__
+*.egg-info
+*.private
+*.deb
