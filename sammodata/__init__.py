@@ -1,3 +1,6 @@
-from .client import OdataQuery
+__version__ = "0.0.2"
 
-__version__ = "0.0.1"
+try:
+	from .client import OdataQuery
+except:
+	pass
