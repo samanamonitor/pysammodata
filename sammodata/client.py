@@ -23,6 +23,8 @@ def value_from_entity_proxy(entity_proxy, key):
     keylist = key.split(".", 1)
     value = entity_proxy.__getattr__(keylist[0])
     if not isinstance(value, EntityProxy):
+        if value is None:
+            raise KeyError("Invalid value for key %s" % key)
         if isinstance(value, datetime):
             return value.timestamp()
         return value
