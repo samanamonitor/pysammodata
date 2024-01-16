@@ -92,9 +92,9 @@ class OdataQuery:
         self._expand = expand
         self._filter = filter
 
-        self._client = Client(self._service_url, self._http_session)
         
     def __iter__(self):
+        self._client = Client(self._service_url, self._http_session)
         self._entity_set_request = self._client.entity_sets.__getattr__(self._entity).get_entities()
         if self._expand:
             self._entity_set_request.expand(self._expand)
