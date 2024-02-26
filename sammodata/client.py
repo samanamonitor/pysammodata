@@ -13,6 +13,15 @@ def dict_from_entity_proxy(entity_proxy):
     for i in cache.keys():
         if isinstance(cache[i], EntityProxy):
             data[i] = dict_from_entity_proxy(cache[i])
+        elif isinstance(cache[i], list):
+            data[i] = []
+            for j in cache[i]:
+                if isinstance(j, EntityProxy):
+                    data[i].append(dict_from_entity_proxy(j))
+                else:
+                    data[i].append(j)
+        elif isinstance(cache[i], datetime):
+            data[i] = cache[i].timestamp()
         else:
             data[i] = cache[i]
     return data
@@ -20,6 +29,8 @@ def dict_from_entity_proxy(entity_proxy):
 def value_from_entity_proxy(entity_proxy, key):
     if not isinstance(entity_proxy, EntityProxy):
         raise TypeError("Expecting EntityProxy class as input")
+    if not isinstance(key, str):
+        raise KeyError
     keylist = key.split(".", 1)
     value = entity_proxy.__getattr__(keylist[0])
     if not isinstance(value, EntityProxy):
@@ -66,6 +77,13 @@ class OdataEntry:
 
     def __getitem__(self, key):
         return value_from_entity_proxy(self._entry, key)
+
+    def __iter__(self):
+        return iter(self.__dict__.items())
+
+    @property
+    def __dict__(self):
+        return dict_from_entity_proxy(self._entry)
 
 
 class OdataQuery:
