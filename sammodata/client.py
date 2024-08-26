@@ -37,7 +37,7 @@ def value_from_entity_proxy(entity_proxy, key):
         if value is None:
             raise KeyError("Invalid value for key %s" % key)
         if isinstance(value, datetime):
-            return value.timestamp()
+            return value.timestamp() * 1000
         return value
     if len(keylist) < 2:
         raise KeyError("Invalid key %s" % key)
