@@ -1,0 +1,9 @@
+MachineFaultStateCode
+Error code	Enum value	Description
+0	Unknown	Fault unknown
+1	None	No fault (healthy machine)
+2	FailedToStart	Last power-on operation for the machine failed
+3	StuckOnBoot	Machine might not have booted following power on (VM tools did not transition to running)
+4	Unregistered	Machine has failed to register within the expected period, or its registration has been rejected
+5	MaxCapacity	Machine is reporting itself at maximum capacity
+6	VirtualMachineNotFound	Virtual machine is not found

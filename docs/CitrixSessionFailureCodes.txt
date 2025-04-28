@@ -1,0 +1,31 @@
+https://developer-docs.citrix.com/en-us/monitor-service-odata-api/current-release/api-reference/monitor-model#sessionfailurecode
+
+Error Code	Enum value	Description
+0	Unknown	Unknown
+1	None	None (no failure)
+2	SessionPreparation	Failure during session preparation
+3	RegistrationTimeout	Failure due to registration timeout
+4	ConnectionTimeout	Failure due to connection timeout
+5	Licensing	Failure due to licensing
+6	Ticketing	Failure due to ticketing
+7	Other	Other failure reasons
+8	GeneralFail	General failure
+9	MaintenanceMode	Desktop group, Machine or Hypervisor is in maintenance mode
+10	ApplicationDisabled	Selected application is currently disabled
+11	LicenseFeatureRefused	Required feature is not licensed
+12	NoDesktopAvailable	No machine is available to satisfy launch
+13	SessionLimitReached	VDI machine is already in use (not used for RDS)
+14	DisallowedProtocol	Requested protocol is not allowed
+15	ResourceUnavailable	Resource is unavailable
+16	ActiveSessionReconnectDisabled	Active session stealing is required, but is disabled
+17	NoSessionToReconnect	Session to which reconnect is directed is not found (can only occur on a launch retry)
+18	SpinUpFailed	Failed to power-up machine for launch
+19	Refused	Session refused
+20	ConfigurationSetFailure	Configuration set failure
+21	MaxTotalInstancesExceeded	App launch refused because limit on total concurrent usage is reached
+22	MaxPerUserInstancesExceeded	App launch refused because limit on per-user usage is reached
+23	CommunicationError	Launch failed because the VDA could not be contacted
+24	MaxPerMachineInstancesExceeded	App launch refused because limit on per machine usage is reached
+25	MaxPerEntitlementInstancesExceeded	Desktop launch refused because limit on per entitlement usage is reached
+100	NoMachineAvailable	No machine available
+101	MachineNotFunctional	Machine not functional
